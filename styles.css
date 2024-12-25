@@ -1,0 +1,324 @@
+/* Global Styles */
+body {
+    font-family: 'Georgia', serif;
+    background-image: url('q11.jpg');
+    background-repeat: repeat; /* Repeats the image both horizontally and vertically */
+    background-size: auto; /* Default size; can also be 'contain' or 'cover' */
+    background-position: top left; /* Aligns the image to the top left */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Container: Main wrapper for content */
+.container {
+    max-width: 600px;
+    text-align: center;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border: 2px solid #ff7a8a;
+    width: 100%; /* Ensure container scales on smaller screens */
+}
+
+/* Header */
+h1 {
+    color: #ff4b5c;
+    margin-bottom: 20px;
+}
+
+/* Profile Section */
+.profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 20px 0;
+    border: 3px solid #ff7a8a;
+}
+
+/* Description Text */
+.description {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Quote Styling */
+.quote {
+    margin-top: 20px;
+    font-style: italic;
+    color: #ff0019;
+    font-size: 16px;
+}
+
+/* Contact Button */
+.contact-button {
+    background: #ff4b5c;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background 0.3s ease;
+}
+
+.contact-button:hover {
+    background: #ff1f39;
+}
+
+/* Banner Image */
+.banner {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+/* Slideshow container */
+.photo-slideshow {
+    display: flex;
+    overflow: hidden;
+    width: 100%; /* Adjust as needed */
+    position: relative;
+}
+
+.slideshow-image {
+    width: 100%;
+    height: 100%;
+    animation: slideshow 40s infinite ease-in-out; /* Adjust timing and effects */
+}
+
+/* Animation for the slideshow */
+@keyframes slideshow {
+    0% {
+        transform: translateX(0);
+    }
+    11% {
+        transform: translateX(-100%);
+    }
+    21% {
+        transform: translateX(-200%);
+    }
+    31% {
+        transform: translateX(-300%);
+    }
+    41% {
+        transform: translateX(-400%);
+    }
+    51% {
+        transform: translateX(-500%);
+    }
+    61% {
+        transform: translateX(-600%);
+    }
+    71% {
+        transform: translateX(-700%);
+    }
+    81% {
+        transform: translateX(-800%);
+    }
+    91% {
+        transform: translateX(-900%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+    
+}
+
+.hidden {
+    display: none;
+}
+
+/* Timeline Section Styling */
+.timeline {
+    background: #fff4f5;
+    color: #333;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+
+/* New Section for Background Image and Photo Gallery */
+.background-section {
+    background-image: url('your-background-image.jpg'); /* Add your background image */
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+/* Photo Gallery */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.gallery-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Mobile Responsiveness: For smaller screens */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 20px; /* Reduce padding on smaller screens */
+        max-width: 100%; /* Ensure container uses full width */
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Adjust font size for mobile */
+    }
+
+    .description {
+        font-size: 1rem; /* Adjust font size for better readability on small screens */
+    }
+
+    .contact-button {
+        font-size: 14px; /* Adjust button font size for mobile */
+        padding: 8px 20px; /* Adjust padding on mobile */
+    }
+
+    .photo-slideshow {
+        width: 100%; /* Ensure the slideshow container fits within the viewport */
+    }
+
+    .slideshow-image {
+        width: 100%; /* Ensure images take up the full width of the container */
+        height: auto;
+    }
+
+    .banner {
+        width: 100%; /* Make sure the banner image scales down on mobile */
+        height: auto;
+    }
+
+    .photo-gallery {
+        grid-template-columns: 1fr 1fr; /* 2-column layout on mobile */
+    }
+}
+
+/* Black Rose Animation Section */
+.black-rose-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.black-rose {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    animation: bloomAnimation 5s ease-out forwards; /* Animation for blooming */
+    transform-origin: center;
+}
+
+/* Blooming Animation */
+@keyframes bloomAnimation {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        width: 150px; /* Adjust based on the size of the rose */
+        height: auto;
+        opacity: 0.8;
+        transform: scale(2);
+    }
+    100% {
+        width: 150px;
+        height: auto;
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Initially hide the black rose */
+.black-rose-container {
+    display: none;  /* Hide the black rose initially */
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.black-rose {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition: all 1s ease;
+    transform-origin: center;
+}
+
+/* Blooming Animation */
+@keyframes bloomAnimation {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        width: 150px; /* Adjust based on the size of the rose */
+        height: auto;
+        opacity: 0.8;
+        transform: scale(2);
+    }
+    100% {
+        width: 150px;
+        height: auto;
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Trigger the animation when the class "animate" is added */
+.black-rose.animate {
+    animation: bloomAnimation 5s ease-out forwards;
+}
+
+/* Button Styling */
+.black-rose-button {
+    background: #ff4b5c;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background 0.3s ease;
+}
+
+.black-rose-button:hover {
+    background: #ff1f39;
+}
+
+.smaller-text {
+    font-size: 14px;  /* Adjust the font size as needed */
+    color: #9b0000;
+}

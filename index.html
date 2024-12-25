@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Someone I Love</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Music -->
+    <audio id="bg-music" autoplay loop>
+        <source src="IV.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const bgMusic = document.getElementById('bg-music');
+        bgMusic.volume = 0.2;
+    </script>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>For the Love of My Life: <span id="name">Cheska</span></h1>
+        <img id="banner" src="1.jpg" alt="Banner Image" class="banner">
+        <p class="description">
+            From Gian, <br>
+            This page is made and dedicated for ches, and ches alone.
+            <br> I love you.
+            <br> <span class="smaller-text">refresh to get a different message everytime
+            <br> |
+            <br> |
+            <br> V
+            </span>
+        </p>    
+        
+        <p class="quote" id="love-line">
+            <!-- The randomized love line will appear here -->
+        </p>
+
+        <button class="contact-button" onclick="showTimeline()">Click me</button>
+
+        <!-- Timeline Section -->
+        <div class="timeline hidden" id="timeline">
+            <h2>Our Photobooth Moments</h2>
+            <div class="photo-slideshow">
+                <img src="q1.jpg" alt="Photo 1" class="slideshow-image">
+                <img src="q2.jpg" alt="Photo 1" class="slideshow-image">
+                <img src="q3.jpg" alt="Photo 1" class="slideshow-image">
+                <img src="q4.jpg" alt="Photo 1" class="slideshow-image">
+                <img src="q5.jpg" alt="Photo 1" class="slideshow-image">
+                <img src="q6.jpg" alt="Photo 1" class="slideshow-image">
+                <img src="q8.jpg" alt="Photo 1" class="slideshow-image">
+                <img src="q9.jpg" alt="Photo 1" class="slideshow-image">
+                <img src="q10.jpg" alt="Photo 1" class="slideshow-image">
+                <img src="q11.jpg" alt="Photo 1" class="slideshow-image">
+                
+                <!-- Add more photos if necessary -->
+            </div>
+            
+
+        </div>
+
+        <!-- Black Rose Animation Container -->
+        <div class="black-rose-container">
+            <img src="black.png" alt="Black Rose" class="black-rose">
+        </div>
+
+        <!-- Hidden Black Rose Button Initially -->
+        <button class="black-rose-button hidden" onclick="showBlackRose()">A gift for you.</button>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Function to show the timeline and reveal the black rose button
+        function showTimeline() {
+            const timeline = document.getElementById('timeline');
+            timeline.style.display = 'block';  // Show the timeline section
+
+            // Reveal the black rose button after the first click
+            const blackRoseButton = document.querySelector('.black-rose-button');
+            blackRoseButton.classList.remove('hidden');  // Remove the 'hidden' class to show the button
+        }
+
+        // Randomize love lines on refresh
+        const loveLines = [
+            "You are the love of my life.",
+            "You're the reason why I keep moving forward.",
+            "Frog.",
+            "Yis, I'll love you forever and ever.",
+            "Life feels incomplete without you in it.",
+            "I miss you.",
+            "I love you.",
+            "See you soon baby."
+        ];
+
+        // Display a random love line
+        const randomLine = loveLines[Math.floor(Math.random() * loveLines.length)];
+        document.getElementById('love-line').innerText = randomLine;
+
+        // Function to show the black rose and trigger the animation
+        function showBlackRose() {
+            const blackRoseContainer = document.querySelector('.black-rose-container');
+            blackRoseContainer.style.display = 'flex';  // Make the black rose visible
+            const blackRose = document.querySelector('.black-rose');
+            blackRose.classList.add('animate');  // Trigger the animation
+        }
+    </script>
+
+<script>
+    // Array of banner image URLs
+    const bannerImages = [
+        '1.jpg',
+        '2.jpg',
+        '3.jpg',
+        '4.jpg',
+        '5.jpg',
+        '5.jpg',
+        '6.jpg',
+        '7.jpg',
+        '8.jpg',
+        '9.jpg' // Add as many images as you want
+    ];
+
+    let currentIndex = 0; // Index of the current image
+
+    function changeBanner() {
+        const banner = document.getElementById('banner');
+        banner.style.opacity = 0; // Fade out
+        setTimeout(() => {
+            currentIndex = (currentIndex + 1) % bannerImages.length; // Update the image
+            banner.src = bannerImages[currentIndex];
+            banner.style.opacity = 1; // Fade in
+        }, 500); // Wait for the fade-out to complete
+    }
+
+    // Change the banner every 2 seconds
+    setInterval(changeBanner, 3000);
+</script>
+
+</body>
+</html>
