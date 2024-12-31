@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Someone I Love</title>
+    <title>For Francheska Abando</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -37,27 +37,49 @@
             <h2 id="countdown-timer">Loading Countdown...</h2>
         </div>
 
-        <!-- New Sweet Message Button -->
-        <button id="sweet-message-btn" class="message-button">Click for a Sweet Message</button>
+        <!-- Gallery Button -->
+        <button class="gallery-button" onclick="toggleGallery()">Our Memories</button>
+        
+        <!-- Sweet Message Button -->
+        <button id="sweet-message-btn" class="message-button">Happy New Year Ches!</button>
+
+        <!-- Timeline Section -->
+        <div class="timeline hidden" id="timeline">
+            <h2>Our Photobooth Moments</h2>
+            <div class="photo-slideshow">
+                <img src="q1.jpg" alt="Photo 1" class="slideshow-image">
+                <img src="q2.jpg" alt="Photo 2" class="slideshow-image">
+                <img src="q3.jpg" alt="Photo 3" class="slideshow-image">
+                <img src="q4.jpg" alt="Photo 4" class="slideshow-image">
+                <img src="q5.jpg" alt="Photo 5" class="slideshow-image">
+                <img src="q6.jpg" alt="Photo 6" class="slideshow-image">
+                <img src="q8.jpg" alt="Photo 8" class="slideshow-image">
+                <img src="q9.jpg" alt="Photo 9" class="slideshow-image">
+                <img src="q10.jpg" alt="Photo 10" class="slideshow-image">
+                <img src="q11.jpg" alt="Photo 11" class="slideshow-image">
+            </div>
+        </div>
     </div>
 
-    <!-- New Sweet Message Container -->
+    <!-- Sweet Message Container -->
     <div id="message-container" class="message-overlay">
         <div class="message-content">
             <div class="message-text">
                 Happy New Year Cheska. Alam mo ba, ever since na nakilala kita, my life has changed for the better, I'm happier, livelier, and got slightly more masipag? HAHAHAHA pero yes, believe it or not, my life has been better because of you. I'm sorry if may times na I overthink and lead us to misunderstandings and arguments over petty little things, I promise, I'm doing my best to change for the better :( 
+
 I promise that i will always love you, us, and myself, all throughout this ever lasting relationship. Damn, I still can't believe na I get to celebrate Christmas, New year, and upcoming holidays with someone that I love and loves me as much as I do 🥹 tangina mahal na mahal kita ches, I hope I make you feel that everyday kasi I genuinely love you with all my heart, genuinely, purely, and I fucking hate it when people badmouth you without them knowing what you've been through and people that don't even know who you actually are. Tangina mangpapatay talaga ako pag may nagtry manira ng relasyon na to pero going back, I can't see a future without you in it or rather, I chose to not bother looking at a path where we wont end up together.  So I will defend you and us sa lahat, I'll make sure to love you the way you deserve it, I'll fix myself, my overthinkingness, and I'll do my best to love you the way you want it and I want it, please learn to love someone like me rin despite me being yk, just this an overthinking insecure and baby na baby guy, i know im older pero im very soft and light hearted. Handle me with care, I'm trying my best to handle you and us with my utmost care 🥹 
+
 Cheska, I love you so much, Im sorry for the times na nag-ooverthink ako, I'm still a boy that's learning how to love and doing his best to live life as he knows. Sana di ka magsawa sa pag assure kasi I really have times na Im down na down and all I want is lambing :(( I know we have to act our age pero chill pls, im still a misunderstood, unsupervised, and wasn't loved much na kid, Cheska pls bare with me okay ☹️ I love you and more memories to come mahal 🫶 I miss you and I FUCKING LOVE YOUUUUUUUUUU!!!!!
             </div>
             <button class="close-button">Close</button>
         </div>
     </div>
 
-    <div id="timer" style="font-size: 2rem; text-align: center; margin-top: 20px;"></div>
-
     <!-- JavaScript -->
     <script>
-        const bgMusic = document.getElementById('bg-music');
+        // [Previous music, message, and timer code remains the same]
+
+const bgMusic = document.getElementById('bg-music');
         bgMusic.volume = 0.2;
         
         // Sweet Message Functionality
@@ -110,7 +132,7 @@ Cheska, I love you so much, Im sorry for the times na nag-ooverthink ako, I'm st
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
     
-            countdownElement.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s until 2025!`;
+            countdownElement.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s until 2026!`;
         }
     
         const timerInterval = setInterval(updateTimer, 1000);
@@ -123,9 +145,10 @@ Cheska, I love you so much, Im sorry for the times na nag-ooverthink ako, I'm st
             bgMusic.pause(); // Pause music during messages
     
             const messages = [
-                "I'm so happy to have meet you Cheska.",
-                "You are now and always will be an important person in my life.",
-                "More memories to come!",
+                "Happy New Year!",
+                "I'm so happy to have met you Cheska.",
+                "You are and will always be the love of my life.",
+                
                 "I love you."
             ];
     
@@ -153,8 +176,8 @@ Cheska, I love you so much, Im sorry for the times na nag-ooverthink ako, I'm st
                         document.body.removeChild(messageElement);
                         index++;
                         displayMessage();
-                    }, 4000);
-                }, 3000);
+                    }, 2000);
+                }, 2500);
             }
     
             displayMessage();
@@ -168,6 +191,33 @@ Cheska, I love you so much, Im sorry for the times na nag-ooverthink ako, I'm st
             setInterval(updateTimer, 1000);
             bgMusic.play(); // Resume music after messages
         }
+        // Gallery Toggle Function
+        function toggleGallery() {
+            const timeline = document.getElementById('timeline');
+            timeline.style.display = timeline.style.display === 'none' || timeline.style.display === '' ? 'block' : 'none';
+        }
+
+        // Banner Image Rotation
+        const bannerImages = [
+            '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg',
+            '6.jpg', '7.jpg', '8.jpg', '9.jpg'
+        ];
+
+        let currentIndex = 0;
+
+        function changeBanner() {
+            const banner = document.getElementById('banner');
+            banner.style.opacity = 0;
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % bannerImages.length;
+                banner.src = bannerImages[currentIndex];
+                banner.style.opacity = 1;
+            }, 500);
+        }
+
+        setInterval(changeBanner, 3000);
+
+        // [Rest of your existing JavaScript code]
     </script>
 </body>
 </html>
