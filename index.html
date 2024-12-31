@@ -8,15 +8,10 @@
 </head>
 <body>
     <!-- Background Music -->
-    <audio id="bg-music" autoplay loop>
+    <audio id="bg-music" loop>
         <source src="IV.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-
-    <script>
-        const bgMusic = document.getElementById('bg-music');
-        bgMusic.volume = 0.2;
-    </script>
 
     <!-- Main Content -->
     <div class="container">
@@ -41,17 +36,43 @@
         <div class="timer-container">
             <h2 id="countdown-timer">Loading Countdown...</h2>
         </div>
+
+        <!-- New Sweet Message Button -->
+        <button id="sweet-message-btn" class="message-button">Click for a Sweet Message</button>
     </div>
 
-    <!-- Fireworks Animation Section -->
-    <div id="fireworks-container" class="hidden">
-        <canvas id="fireworks-canvas"></canvas>
+    <!-- New Sweet Message Container -->
+    <div id="message-container" class="message-overlay">
+        <div class="message-content">
+            <p>Happy New Year Cheska. Alam mo ba, ever since na nakilala kita, my life has changed for the better, I'm happier, livelier, and got slightly more masipag? HAHAHAHA pero yes, believe it or not, my life has been better because of you. I'm sorry if may times na I overthink and lead us to misunderstandings and arguments over petty little things, I promise, I'm doing my best to change for the better :( 
+
+                I promise that i will always love you, us, and myself, all throughout this ever lasting relationship. Damn, I still can't believe na I get to celebrate Christmas, New year, and upcoming holidays with someone that I love and loves me as much as I do 🥹 tangina mahal na mahal kita ches, I hope I make you feel that everyday kasi I genuinely love you with all my heart, genuinely, purely, and I fucking hate it when people badmouth you without them knowing what you've been through and people that don't even know who you actually are. Tangina mangpapatay talaga ako pag may nagtry manira ng relasyon na to pero going back, I can't see a future without you in it or rather, I chose to not bother looking at a path where we wont end up together.  So I will defend you and us sa lahat, I'll make sure to love you the way you deserve it, I'll fix myself, my overthinkingness, and I'll do my best to love you the way you want it and I want it, please learn to love someone like me rin despite me being yk, just this an overthinking insecure and baby na baby guy, i know im older pero im very soft and light hearted. Handle me with care, I'm trying my best to handle you and us with my utmost care 🥹 
+                
+                Cheska, I love you so much, Im sorry for the times na nag-ooverthink ako, I'm still a boy that's learning how to love and doing his best to live life as he knows. Sana di ka magsawa sa pag assure kasi I really have times na Im down na down and all I want is lambing :(( I know we have to act our age pero chill pls, im still a misunderstood, unsupervised, and wasn't loved much na kid, Cheska pls bare with me okay ☹️ I love you and more memories to come mahal 🫶 I miss you and I FUCKING LOVE YOUUUUUUUUUU!!!!!</p>
+            <button class="close-button">Close</button>
+        </div>
     </div>
 
     <div id="timer" style="font-size: 2rem; text-align: center; margin-top: 20px;"></div>
 
     <!-- JavaScript -->
     <script>
+        const bgMusic = document.getElementById('bg-music');
+        bgMusic.volume = 0.2;
+        
+        // Sweet Message Functionality
+        const messageBtn = document.getElementById('sweet-message-btn');
+        const messageContainer = document.getElementById('message-container');
+        const closeButton = document.querySelector('.close-button');
+
+        messageBtn.addEventListener('click', () => {
+            messageContainer.style.display = 'flex';
+        });
+
+        closeButton.addEventListener('click', () => {
+            messageContainer.style.display = 'none';
+        });
+
         // Randomize love lines on refresh
         const loveLines = [
             "You are the love of my life.",
@@ -70,7 +91,6 @@
     
         // Countdown Timer
         const countdownElement = document.getElementById('countdown-timer');
-        const fireworksContainer = document.getElementById('fireworks-container');
         const mainContent = document.querySelector('.container');
     
         let targetDate = new Date().getTime();
@@ -90,16 +110,17 @@
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
     
-            countdownElement.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s until 2025!`;
+            countdownElement.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s until 2026!`;
         }
     
         const timerInterval = setInterval(updateTimer, 1000);
-        updateTimer(); // Initial call
+        updateTimer();
     
         // Transition to Messages
         function startTransition() {
-            mainContent.style.display = 'none'; // Hide main content
-            document.body.style.background = "black"; // Turn screen black
+            mainContent.style.display = 'none';
+            document.body.style.background = "black";
+            bgMusic.pause(); // Pause music during messages
     
             const messages = [
                 "I'm so happy to meet you last year.",
@@ -112,7 +133,7 @@
     
             function displayMessage() {
                 if (index >= messages.length) {
-                    endTransition(); // Go back to original content
+                    endTransition();
                     return;
                 }
     
@@ -128,15 +149,15 @@
                 document.body.appendChild(messageElement);
     
                 setTimeout(() => {
-                    messageElement.style.opacity = "1"; // Fade in
+                    messageElement.style.opacity = "1";
                 }, 100);
     
                 setTimeout(() => {
-                    messageElement.style.opacity = "0"; // Fade out
+                    messageElement.style.opacity = "0";
                     setTimeout(() => {
                         document.body.removeChild(messageElement);
                         index++;
-                        displayMessage(); // Show next message
+                        displayMessage();
                     }, 4000);
                 }, 3000);
             }
@@ -144,15 +165,14 @@
             displayMessage();
         }
     
-        // Return to Original Website
         function endTransition() {
-            document.body.style.background = ""; // Reset background
-            mainContent.style.display = 'block'; // Show main content
-            targetDate = new Date("2026-01-01T00:00:00").getTime(); // Update countdown for 2026
-            updateTimer(); // Update immediately
-            setInterval(updateTimer, 1000); // Restart timer
+            document.body.style.background = "";
+            mainContent.style.display = 'block';
+            targetDate = new Date("2026-01-01T00:00:00").getTime();
+            updateTimer();
+            setInterval(updateTimer, 1000);
+            bgMusic.play(); // Resume music after messages
         }
     </script>
-    
 </body>
 </html>
