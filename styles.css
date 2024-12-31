@@ -44,6 +44,67 @@ h1 {
     transition: opacity 0.5s ease-in-out;
 }
 
+/* Photo Gallery and Timeline Section */
+.timeline {
+    background: #fff4f5;
+    color: #333;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+.photo-slideshow {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.slideshow-image {
+    width: 100%;
+    height: 100%;
+    animation: slideshow 40s infinite ease-in-out;
+}
+
+@keyframes slideshow {
+    0% { transform: translateX(0); }
+    11% { transform: translateX(-100%); }
+    21% { transform: translateX(-200%); }
+    31% { transform: translateX(-300%); }
+    41% { transform: translateX(-400%); }
+    51% { transform: translateX(-500%); }
+    61% { transform: translateX(-600%); }
+    71% { transform: translateX(-700%); }
+    81% { transform: translateX(-800%); }
+    91% { transform: translateX(-900%); }
+    100% { transform: translateX(0); }
+}
+
+/* Gallery Button */
+.gallery-button {
+    background: #ff4b5c;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px 10px;
+    transition: background 0.3s ease;
+}
+
+.gallery-button:hover {
+    background: #ff1f39;
+}
+
+.hidden {
+    display: none;
+}
+
 /* Description Text */
 .description {
     font-size: 18px;
@@ -171,11 +232,42 @@ h1 {
 
     .message-text {
         font-size: 14px;
-        padding: 5px;
+        line-height: 1.4;
+        padding: 10px;
+        word-wrap: break-word;
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+
+    .close-button {
+        font-size: 12px;
+        padding: 6px 15px;
     }
 
     .transition-message {
         font-size: 1.5rem;
         padding: 0 20px;
+    }
+}
+
+/* Extra small devices (phones, 480px and down) */
+@media screen and (max-width: 480px) {
+    .message-text {
+        font-size: 12px;
+        line-height: 1.3;
+        padding: 8px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+
+    .close-button {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .transition-message {
+        font-size: 1.2rem;
     }
 }
