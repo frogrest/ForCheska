@@ -38,17 +38,17 @@
         </div>
 
         <!-- New Sweet Message Button -->
-        <button id="sweet-message-btn" class="message-button">Happy New Year Cheska, Please Click Me</button>
+        <button id="sweet-message-btn" class="message-button">Click for a Sweet Message</button>
     </div>
 
     <!-- New Sweet Message Container -->
     <div id="message-container" class="message-overlay">
         <div class="message-content">
-            <p>Happy New Year Cheska. Alam mo ba, ever since na nakilala kita, my life has changed for the better, I'm happier, livelier, and got slightly more masipag? HAHAHAHA pero yes, believe it or not, my life has been better because of you. I'm sorry if may times na I overthink and lead us to misunderstandings and arguments over petty little things, I promise, I'm doing my best to change for the better :( 
-
-                I promise that i will always love you, us, and myself, all throughout this ever lasting relationship. Damn, I still can't believe na I get to celebrate Christmas, New year, and upcoming holidays with someone that I love and loves me as much as I do 🥹 tangina mahal na mahal kita ches, I hope I make you feel that everyday kasi I genuinely love you with all my heart, genuinely, purely, and I fucking hate it when people badmouth you without them knowing what you've been through and people that don't even know who you actually are. Tangina mangpapatay talaga ako pag may nagtry manira ng relasyon na to pero going back, I can't see a future without you in it or rather, I chose to not bother looking at a path where we wont end up together.  So I will defend you and us sa lahat, I'll make sure to love you the way you deserve it, I'll fix myself, my overthinkingness, and I'll do my best to love you the way you want it and I want it, please learn to love someone like me rin despite me being yk, just this an overthinking insecure and baby na baby guy, i know im older pero im very soft and light hearted. Handle me with care, I'm trying my best to handle you and us with my utmost care 🥹 
-                
-                Cheska, I love you so much, Im sorry for the times na nag-ooverthink ako, I'm still a boy that's learning how to love and doing his best to live life as he knows. Sana di ka magsawa sa pag assure kasi I really have times na Im down na down and all I want is lambing :(( I know we have to act our age pero chill pls, im still a misunderstood, unsupervised, and wasn't loved much na kid, Cheska pls bare with me okay ☹️ I love you and more memories to come mahal 🫶 I miss you and I FUCKING LOVE YOUUUUUUUUUU!!!!!</p>
+            <div class="message-text">
+                Happy New Year Cheska. Alam mo ba, ever since na nakilala kita, my life has changed for the better, I'm happier, livelier, and got slightly more masipag? HAHAHAHA pero yes, believe it or not, my life has been better because of you. I'm sorry if may times na I overthink and lead us to misunderstandings and arguments over petty little things, I promise, I'm doing my best to change for the better :( 
+I promise that i will always love you, us, and myself, all throughout this ever lasting relationship. Damn, I still can't believe na I get to celebrate Christmas, New year, and upcoming holidays with someone that I love and loves me as much as I do 🥹 tangina mahal na mahal kita ches, I hope I make you feel that everyday kasi I genuinely love you with all my heart, genuinely, purely, and I fucking hate it when people badmouth you without them knowing what you've been through and people that don't even know who you actually are. Tangina mangpapatay talaga ako pag may nagtry manira ng relasyon na to pero going back, I can't see a future without you in it or rather, I chose to not bother looking at a path where we wont end up together.  So I will defend you and us sa lahat, I'll make sure to love you the way you deserve it, I'll fix myself, my overthinkingness, and I'll do my best to love you the way you want it and I want it, please learn to love someone like me rin despite me being yk, just this an overthinking insecure and baby na baby guy, i know im older pero im very soft and light hearted. Handle me with care, I'm trying my best to handle you and us with my utmost care 🥹 
+Cheska, I love you so much, Im sorry for the times na nag-ooverthink ako, I'm still a boy that's learning how to love and doing his best to live life as he knows. Sana di ka magsawa sa pag assure kasi I really have times na Im down na down and all I want is lambing :(( I know we have to act our age pero chill pls, im still a misunderstood, unsupervised, and wasn't loved much na kid, Cheska pls bare with me okay ☹️ I love you and more memories to come mahal 🫶 I miss you and I FUCKING LOVE YOUUUUUUUUUU!!!!!
+            </div>
             <button class="close-button">Close</button>
         </div>
     </div>
@@ -110,22 +110,22 @@
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
     
-            countdownElement.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s until 2026!`;
+            countdownElement.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s until 2025!`;
         }
     
         const timerInterval = setInterval(updateTimer, 1000);
         updateTimer();
     
-        // Transition to Messages
+        // Transition to Messages with centered positioning
         function startTransition() {
             mainContent.style.display = 'none';
             document.body.style.background = "black";
             bgMusic.pause(); // Pause music during messages
     
             const messages = [
-                "I'm so happy to meet you last year.",
-                "You are now an important person in my life.",
-                "More memories to come, Cheska.",
+                "I'm so happy to have meet you Cheska.",
+                "You are now and always will be an important person in my life.",
+                "More memories to come!",
                 "I love you."
             ];
     
@@ -139,12 +139,7 @@
     
                 const messageElement = document.createElement("div");
                 messageElement.innerText = messages[index];
-                messageElement.style.color = "white";
-                messageElement.style.fontSize = "2rem";
-                messageElement.style.textAlign = "center";
-                messageElement.style.marginTop = "20%";
-                messageElement.style.opacity = "0";
-                messageElement.style.transition = "opacity 2s";
+                messageElement.className = 'transition-message';
     
                 document.body.appendChild(messageElement);
     
