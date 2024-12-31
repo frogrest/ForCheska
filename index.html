@@ -32,110 +32,127 @@
             <br> V
             </span>
         </p>    
-        
+
         <p class="quote" id="love-line">
             <!-- The randomized love line will appear here -->
         </p>
 
-        <button class="contact-button" onclick="showTimeline()">Click me</button>
-
-        <!-- Timeline Section -->
-        <div class="timeline hidden" id="timeline">
-            <h2>Our Photobooth Moments</h2>
-            <div class="photo-slideshow">
-                <img src="q1.jpg" alt="Photo 1" class="slideshow-image">
-                <img src="q2.jpg" alt="Photo 1" class="slideshow-image">
-                <img src="q3.jpg" alt="Photo 1" class="slideshow-image">
-                <img src="q4.jpg" alt="Photo 1" class="slideshow-image">
-                <img src="q5.jpg" alt="Photo 1" class="slideshow-image">
-                <img src="q6.jpg" alt="Photo 1" class="slideshow-image">
-                <img src="q8.jpg" alt="Photo 1" class="slideshow-image">
-                <img src="q9.jpg" alt="Photo 1" class="slideshow-image">
-                <img src="q10.jpg" alt="Photo 1" class="slideshow-image">
-                <img src="q11.jpg" alt="Photo 1" class="slideshow-image">
-                
-                <!-- Add more photos if necessary -->
-            </div>
-            
-
+        <!-- Timer Section -->
+        <div class="timer-container">
+            <h2 id="countdown-timer">Loading Countdown...</h2>
         </div>
-
-        <!-- Black Rose Animation Container -->
-        <div class="black-rose-container">
-            <img src="black.png" alt="Black Rose" class="black-rose">
-        </div>
-
-        <!-- Hidden Black Rose Button Initially -->
-        <button class="black-rose-button hidden" onclick="showBlackRose()">A gift for you.</button>
     </div>
+
+    <!-- Fireworks Animation Section -->
+    <div id="fireworks-container" class="hidden">
+        <canvas id="fireworks-canvas"></canvas>
+    </div>
+
+    <div id="timer" style="font-size: 2rem; text-align: center; margin-top: 20px;"></div>
 
     <!-- JavaScript -->
     <script>
-        // Function to show the timeline and reveal the black rose button
-        function showTimeline() {
-            const timeline = document.getElementById('timeline');
-            timeline.style.display = 'block';  // Show the timeline section
-
-            // Reveal the black rose button after the first click
-            const blackRoseButton = document.querySelector('.black-rose-button');
-            blackRoseButton.classList.remove('hidden');  // Remove the 'hidden' class to show the button
-        }
-
         // Randomize love lines on refresh
         const loveLines = [
             "You are the love of my life.",
             "You're the reason why I keep moving forward.",
             "Frog.",
             "Yis, I'll love you forever and ever.",
-            "Life feels incomplete without you in it.",
+            "Life feels incomplete without you.",
             "I miss you.",
             "I love you.",
             "See you soon baby."
         ];
-
+    
         // Display a random love line
         const randomLine = loveLines[Math.floor(Math.random() * loveLines.length)];
         document.getElementById('love-line').innerText = randomLine;
-
-        // Function to show the black rose and trigger the animation
-        function showBlackRose() {
-            const blackRoseContainer = document.querySelector('.black-rose-container');
-            blackRoseContainer.style.display = 'flex';  // Make the black rose visible
-            const blackRose = document.querySelector('.black-rose');
-            blackRose.classList.add('animate');  // Trigger the animation
+    
+        // Countdown Timer
+        const countdownElement = document.getElementById('countdown-timer');
+        const fireworksContainer = document.getElementById('fireworks-container');
+        const mainContent = document.querySelector('.container');
+    
+        let targetDate = new Date("2025-01-01T00:00:00").getTime();
+    
+        function updateTimer() {
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+    
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                startTransition();
+                return;
+            }
+    
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+    
+            countdownElement.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s until 2025!`;
+        }
+    
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer(); // Initial call
+    
+        // Transition to Messages
+        function startTransition() {
+            mainContent.style.display = 'none'; // Hide main content
+            document.body.style.background = "black"; // Turn screen black
+    
+            const messages = [
+                "I'm so happy to meet you this year.",
+                "You are now an important person in my life.",
+                "More memories to come, Cheska.",
+                "I love you."
+            ];
+    
+            let index = 0;
+    
+            function displayMessage() {
+                if (index >= messages.length) {
+                    endTransition(); // Go back to original content
+                    return;
+                }
+    
+                const messageElement = document.createElement("div");
+                messageElement.innerText = messages[index];
+                messageElement.style.color = "white";
+                messageElement.style.fontSize = "2rem";
+                messageElement.style.textAlign = "center";
+                messageElement.style.marginTop = "20%";
+                messageElement.style.opacity = "0";
+                messageElement.style.transition = "opacity 2s";
+    
+                document.body.appendChild(messageElement);
+    
+                setTimeout(() => {
+                    messageElement.style.opacity = "1"; // Fade in
+                }, 100);
+    
+                setTimeout(() => {
+                    messageElement.style.opacity = "0"; // Fade out
+                    setTimeout(() => {
+                        document.body.removeChild(messageElement);
+                        index++;
+                        displayMessage(); // Show next message
+                    }, 4000);
+                }, 3000);
+            }
+    
+            displayMessage();
+        }
+    
+        // Return to Original Website
+        function endTransition() {
+            document.body.style.background = ""; // Reset background
+            mainContent.style.display = 'block'; // Show main content
+            targetDate = new Date("2026-01-01T00:00:00").getTime(); // Update countdown for 2026
+            updateTimer(); // Update immediately
+            setInterval(updateTimer, 1000); // Restart timer
         }
     </script>
-
-<script>
-    // Array of banner image URLs
-    const bannerImages = [
-        '1.jpg',
-        '2.jpg',
-        '3.jpg',
-        '4.jpg',
-        '5.jpg',
-        '5.jpg',
-        '6.jpg',
-        '7.jpg',
-        '8.jpg',
-        '9.jpg' // Add as many images as you want
-    ];
-
-    let currentIndex = 0; // Index of the current image
-
-    function changeBanner() {
-        const banner = document.getElementById('banner');
-        banner.style.opacity = 0; // Fade out
-        setTimeout(() => {
-            currentIndex = (currentIndex + 1) % bannerImages.length; // Update the image
-            banner.src = bannerImages[currentIndex];
-            banner.style.opacity = 1; // Fade in
-        }, 500); // Wait for the fade-out to complete
-    }
-
-    // Change the banner every 2 seconds
-    setInterval(changeBanner, 3000);
-</script>
-
+    
 </body>
 </html>
